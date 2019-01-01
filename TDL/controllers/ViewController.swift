@@ -12,22 +12,11 @@ class ViewController: UITableViewController {
     
     // var itemArray = ["Pray","Study","Gym"]
     var itemArray   = [Item]()
-    let defaults = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let items = defaults.array(forKey: "ToDoListArray") as? [Item]{
-        itemArray = items}
-        let newItem = Item()
-        newItem.title = "Prayers"
-        itemArray.append(newItem)
-        let newItem2 = Item()
-        newItem2.title = "Studies"
-        itemArray.append(newItem2)
-        let newItem3 = Item()
-        newItem3.title = "IOS"
-        itemArray.append(newItem3)
-        // Do any additional setup after loading the view, typically from a nib.
+        loadItems()
     }
     
     
@@ -51,7 +40,8 @@ class ViewController: UITableViewController {
         print(itemArray[indexPath.row])
         // to change the check property of the item
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        tableView.reloadData()
+        saveItems()
+        self.tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -61,15 +51,11 @@ class ViewController: UITableViewController {
         var textField = UITextField()
         let alert = UIAlertController(title: "To do List Item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add item", style: .default){(action) in
-            // what will happen if the user clicks add item button on UI alert
-            // print("Success!")
-            // print(textField.text!)
             if textField.text != ""{
                 let newItem   = Item()
                 newItem.title = textField.text!
                 self.itemArray.append(newItem)
-                self.defaults.set(self.itemArray, forKey: "ToDoListArray")
-                self.tableView.reloadData()
+                self.saveItems()
             }
         }
         alert.addTextField{ (alertTextField) in
@@ -79,5 +65,25 @@ class ViewController: UITableViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
-}
+    func saveItems(){
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(itemArray)
+            try data.write(to: dataFilePath!)
+        }catch{
+            print("Encoding Error")
+        }
+        self.tableView.reloadData()
+    }
+    func loadItems(){
+        if let data = try? Data(contentsOf: dataFilePath!){
+            let decoder = PropertyListDecoder()
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("decoding error")
+            }
+                    }
+    }
 
+}
