@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA1423CC21DBCC35003DCD02 /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1423CB21DBCC35003DCD02 /* item.swift */; };
 		CA52242721D9E88D00FB5F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52242621D9E88D00FB5F63 /* AppDelegate.swift */; };
 		CA52242921D9E88D00FB5F63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52242821D9E88D00FB5F63 /* ViewController.swift */; };
 		CA52242C21D9E88D00FB5F63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA52242A21D9E88D00FB5F63 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA1423CB21DBCC35003DCD02 /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
 		CA52242321D9E88D00FB5F63 /* TDL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA52242621D9E88D00FB5F63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA52242821D9E88D00FB5F63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA1423CD21DBCC54003DCD02 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				CA1423CB21DBCC35003DCD02 /* item.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		CA1423CE21DBCC6D003DCD02 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CA52242821D9E88D00FB5F63 /* ViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		CA1423CF21DBCC88003DCD02 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				CA52242A21D9E88D00FB5F63 /* Main.storyboard */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		CA1423D021DBCCA7003DCD02 /* supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
+				CA52242D21D9E88E00FB5F63 /* Assets.xcassets */,
+				CA52242F21D9E88E00FB5F63 /* LaunchScreen.storyboard */,
+			);
+			path = "supporting FIles";
+			sourceTree = "<group>";
+		};
 		CA52241A21D9E88D00FB5F63 = {
 			isa = PBXGroup;
 			children = (
@@ -55,10 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				CA52242621D9E88D00FB5F63 /* AppDelegate.swift */,
-				CA52242821D9E88D00FB5F63 /* ViewController.swift */,
-				CA52242A21D9E88D00FB5F63 /* Main.storyboard */,
-				CA52242D21D9E88E00FB5F63 /* Assets.xcassets */,
-				CA52242F21D9E88E00FB5F63 /* LaunchScreen.storyboard */,
+				CA1423CE21DBCC6D003DCD02 /* controllers */,
+				CA1423CD21DBCC54003DCD02 /* Data Model */,
+				CA1423CF21DBCC88003DCD02 /* views */,
+				CA1423D021DBCCA7003DCD02 /* supporting FIles */,
 				CA52243221D9E88E00FB5F63 /* Info.plist */,
 			);
 			path = TDL;
@@ -136,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA52242921D9E88D00FB5F63 /* ViewController.swift in Sources */,
+				CA1423CC21DBCC35003DCD02 /* item.swift in Sources */,
 				CA52242721D9E88D00FB5F63 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
