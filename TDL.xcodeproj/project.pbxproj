@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3D36E9DA6DFEBF7EE7528E8B /* Pods_TDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D87405BA283E35E5890F88 /* Pods_TDL.framework */; };
-		CA1423D321DC3F74003DCD02 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA1423D121DC3F74003DCD02 /* DataModel.xcdatamodeld */; };
-		CA5160F821E19F2B004E4B26 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5160F721E19F2B004E4B26 /* Data.swift */; };
 		CA52242721D9E88D00FB5F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52242621D9E88D00FB5F63 /* AppDelegate.swift */; };
 		CA52242921D9E88D00FB5F63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52242821D9E88D00FB5F63 /* ViewController.swift */; };
 		CA52242C21D9E88D00FB5F63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA52242A21D9E88D00FB5F63 /* Main.storyboard */; };
 		CA52242E21D9E88E00FB5F63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA52242D21D9E88E00FB5F63 /* Assets.xcassets */; };
 		CA52243121D9E88E00FB5F63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA52242F21D9E88E00FB5F63 /* LaunchScreen.storyboard */; };
+		CAA3186721E1C3D5008BB1D4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA3186621E1C3D5008BB1D4 /* Item.swift */; };
+		CAA3186921E1C521008BB1D4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA3186821E1C521008BB1D4 /* Category.swift */; };
 		CAB1038B21E0E88700FA9B0B /* categoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1038A21E0E88700FA9B0B /* categoryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,8 +22,6 @@
 		20DE641458D9FA884D0B020E /* Pods-TDL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDL.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDL/Pods-TDL.release.xcconfig"; sourceTree = "<group>"; };
 		29D87405BA283E35E5890F88 /* Pods_TDL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TDL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C205335FAAF3485A2155C050 /* Pods-TDL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDL/Pods-TDL.debug.xcconfig"; sourceTree = "<group>"; };
-		CA1423D221DC3F74003DCD02 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		CA5160F721E19F2B004E4B26 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		CA52242321D9E88D00FB5F63 /* TDL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA52242621D9E88D00FB5F63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA52242821D9E88D00FB5F63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +29,8 @@
 		CA52242D21D9E88E00FB5F63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA52243021D9E88E00FB5F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA52243221D9E88E00FB5F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAA3186621E1C3D5008BB1D4 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		CAA3186821E1C521008BB1D4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CAB1038A21E0E88700FA9B0B /* categoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,8 +66,8 @@
 		CA1423CD21DBCC54003DCD02 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				CA5160F721E19F2B004E4B26 /* Data.swift */,
-				CA1423D121DC3F74003DCD02 /* DataModel.xcdatamodeld */,
+				CAA3186821E1C521008BB1D4 /* Category.swift */,
+				CAA3186621E1C3D5008BB1D4 /* Item.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -251,10 +251,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA3186721E1C3D5008BB1D4 /* Item.swift in Sources */,
+				CAA3186921E1C521008BB1D4 /* Category.swift in Sources */,
 				CAB1038B21E0E88700FA9B0B /* categoryViewController.swift in Sources */,
-				CA5160F821E19F2B004E4B26 /* Data.swift in Sources */,
 				CA52242921D9E88D00FB5F63 /* ViewController.swift in Sources */,
-				CA1423D321DC3F74003DCD02 /* DataModel.xcdatamodeld in Sources */,
 				CA52242721D9E88D00FB5F63 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,19 +457,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		CA1423D121DC3F74003DCD02 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CA1423D221DC3F74003DCD02 /* DataModel.xcdatamodel */,
-			);
-			currentVersion = CA1423D221DC3F74003DCD02 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CA52241B21D9E88D00FB5F63 /* Project object */;
 }

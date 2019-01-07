@@ -9,20 +9,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       
-        let data = Data()
-        data.name = "Angela"
-        data.age  = 12
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.add(data)
-            }
-        }catch {
-            print("error installing realm \(error)")
-        }
-        
         return true
     }
     func applicationWillTerminate(_ application: UIApplication) {
