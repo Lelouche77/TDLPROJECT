@@ -8,13 +8,15 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
-class ViewController: UITableViewController {
+class ViewController: SwipeTableViewController {
     
     // var itemArray = ["Pray","Study","Gym"]
     var toDoItems: Results<Item>?
     let realm = try! Realm()
     
+    @IBOutlet weak var searchBar: UISearchBar!
     var selectedCategory : Category? {
         didSet{
             loadItems()
@@ -25,7 +27,29 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.separatorStyle = .none
+      
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+       title = selectedCategory?.name
+         guard let colorHex = selectedCategory?.colour  else {fatalError()}
+        updateNavBar(withHexCode: colorHex)
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+      updateNavBar(withHexCode: "1D9BF6")
+    }
+    // Mark: - Nav bar setup methods
+    func updateNavBar(withHexCode colorHexCode: String){
+
+        guard let navBar   = navigationController?.navigationBar else {fatalError()}
+        guard let navBarColor = UIColor(hexString: colorHexCode) else {fatalError()}
+        
+        navBar.barTintColor = UIColor(hexString: colorHexCode)
+        navBar.tintColor = UIColor.init(contrastingBlackOrWhiteColorOn: UIColor(hexString: colorHexCode), isFlat: true)
+        searchBar.barTintColor = UIColor(hexString: colorHexCode)
+        navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(contrastingBlackOrWhiteColorOn: navBarColor, isFlat: true)]
     }
     
     
@@ -36,14 +60,18 @@ class ViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "toDoItemCell", for: indexPath)
-        if let item = toDoItems?[indexPath.row] {
+       
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        if let item = toDoItems?[indexPath.row]{
             cell.textLabel?.text = item.title
+            if let color  = UIColor.init(hexString: selectedCategory?.colour).darken(byPercentage: (CGFloat(indexPath.row) / CGFloat((toDoItems?.count)!))){
+                cell.backgroundColor = color
+                cell.textLabel?.textColor = UIColor.init(contrastingBlackOrWhiteColorOn: color, isFlat: true)
+            }
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
             cell.textLabel?.text = "No items added"
         }
-        
         return cell
     }
     
@@ -100,7 +128,17 @@ class ViewController: UITableViewController {
         tableView.reloadData()
         
     }
-    
+    override func updateModel(at indexPath: IndexPath) {
+        if let item = toDoItems?[indexPath.row]{
+            do{
+                try realm.write {
+                    realm.delete(item)
+                }
+            }catch{
+                print("Error deleting item \(error)")
+            }
+        }
+    }
     
 }
 // Mark: search bar methods
@@ -118,4 +156,5 @@ extension ViewController: UISearchBarDelegate {
             
         }
     }
+    
 }
